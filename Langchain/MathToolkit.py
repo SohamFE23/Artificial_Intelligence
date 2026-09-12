@@ -16,11 +16,15 @@ def sum_nums(
     Adds a list of numbers provided by the user.
     If absolute is True, it adds the absolute values of the numbers.
     """
-    if absolute:
-        number = [abs(num) for num in number]
-
-    total = sum(number)
-    return {"result": total}
+    matches= re.findall(r'-?\d+\.?\d*',inputs)
+    if not matches:
+        return {"result":"No numbers found in inputs."}
+    try:
+        numbers=[float(num) for num in matches]
+        total=sum(numbers)
+        return {"result":total}
+    except Exception as e:
+        return {"result": f"Error occured while processing. {str(e)}"}
 
 def subtract_nums(
     number: list[float],
