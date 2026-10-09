@@ -1,3 +1,5 @@
 .venv/
 Langchain/.env
 genai/.env
+
+so.txt
